@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'meta_search'
 gem 'bootstrap-sass', '< 3.0'
+gem 'bootstrap_flash_messages'
 gem 'redactor-rails'
 
 group :assets do

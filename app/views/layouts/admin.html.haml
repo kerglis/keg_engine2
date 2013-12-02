@@ -18,7 +18,8 @@
         = render "admin/shared/header"
 
       #content.admin
-        = render "flash_panel"
+        #flash_messages
+          = flash_messages(:close, :fade)
         = yield
 
       #footer
