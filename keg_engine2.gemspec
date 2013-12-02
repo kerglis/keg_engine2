@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'awesome_nested_set'
 
   s.add_dependency 'devise'
+  s.add_dependency 'cancan'
   s.add_dependency 'redactor-rails'
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'config_spartan'

@@ -34,6 +34,10 @@ module KegHelper
     link_to(options[:label], options[:url], in_params)
   end
 
+  def fa_icon(icon)
+    "<i class='fa fa-#{icon}'></i>".html_safe
+  end
+
   def twicon(icon)
     "<i class='icon-#{icon}'></i>".html_safe
   end

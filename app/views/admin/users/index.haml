@@ -11,8 +11,6 @@
         %th.nw= f.text_field :first_name_or_last_name_like, placeholder: tt(User, :full_name), class: "small", :"data-clearable-field" => true
 
   %tbody
-    - @users.each do |user|
-      %tr[user]
-        = render user
+    = render @users
 
 = will_paginate(@users)

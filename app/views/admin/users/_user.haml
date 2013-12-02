@@ -1,0 +1,7 @@
+%tr[user]
+  %td.nw
+    = link_to_delete user if user.id != current_user.id
+  %td.nw
+    = link_to user.email, edit_resource_url(user)
+  %td
+    = user.full_name

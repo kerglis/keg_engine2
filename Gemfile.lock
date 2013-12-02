@@ -4,6 +4,7 @@ PATH
     keg_engine2 (2.0)
       acts_as_list
       awesome_nested_set
+      cancan
       config_spartan
       devise
       haml-rails
@@ -57,6 +58,7 @@ GEM
       sass (~> 3.2)
     bootstrap_flash_messages (0.0.7)
     builder (3.1.4)
+    cancan (1.6.10)
     capistrano (3.0.1)
       i18n
       rake (>= 10.0.0)

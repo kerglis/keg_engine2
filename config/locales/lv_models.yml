@@ -14,5 +14,5 @@ lv:
         password: Parole
         password_confirmation: Parole vēlreiz
         remember_me: Atcerēties mani
-        edit_profile: <i class='icon-pencil'></i> Labot profilu
-        logout: <i class='icon-eject'></i> Iziet
+        edit_profile: <i class='fa fa-pencil'></i> Labot profilu
+        logout: <i class='fa fa-eject'></i> Iziet
