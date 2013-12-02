@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :first_name,           limit: 30
       t.string   :last_name,            limit: 30
       t.boolean  :admin,                                default: false
+      t.string   :state,                limit: 20
       t.string   :encrypted_password,   limit: 128,     default: "",    null: false
       t.string   :reset_password_token
       t.datetime :remember_created_at
@@ -20,7 +21,8 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, [:email], unique: true
-    add_index :users, [:reset_password_token], unique: true
+    add_index :users, :state
+    add_index :users, :reset_password_token, unique: true
 
   end
 end

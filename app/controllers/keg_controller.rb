@@ -3,9 +3,7 @@ module KegController
   def self.included(base)
     base.class_eval do
 
-      protect_from_forgery
-
-      helper KegEngine::Engine.helpers
+      helper KegEngine2::Engine.helpers
 
       include SetLocale
 
@@ -14,11 +12,10 @@ module KegController
       before_filter   :set_locale
       before_filter   :load_rpp
       before_filter   :set_user_current
-      helper_method   :title, :set_title
 
       unless Rails.env.development?
         rescue_from ActiveRecord::RecordNotFound do
-          render(file: 'shared/err_404', layout: 'application', status: :not_found )
+          render(file: 'err_404', layout: 'application', status: :not_found )
         end
       end
 
@@ -35,41 +32,8 @@ module KegController
         return (params[:layout]) ? params[:layout] : "application"
       end
 
-      def set_title(title)
-        @title = title
-      end
-
-      def title
-        (@title.blank?) ? default_title : @title
-      end
-
-      def default_title
-        AppConfig[:site_name]
-      end
-
       def load_rpp
-        session[:page] = params[:page] if params[:page]
-        @page = session[:page]
-        @page ||= 1
-        @rpp = session[:rpp]
-        @rpp ||= AppConfig[:rpp]
-      end
-
-      def load_filters
-        name = self.class.to_s
-        @filters ||= session[name]
-        @filters ||= {}
-        @filters
-      end
-
-      def filter
-        name = self.class.to_s
-        session[name] = params[:search]
-        session[name] ||= {}
-
-        session[:return_to] = params[:return_to] if params[:return_to]
-
-        redirect_back_or_default "/"
+        @rpp = AppConfig[:rpp]
       end
 
       def destroy_object

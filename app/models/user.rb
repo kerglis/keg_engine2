@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
+
+  include StdState
+
   devise :database_authenticatable, :rememberable, :registerable, :recoverable, :trackable, :validatable, :omniauthable
 
   attr_accessible   :email, :first_name, :last_name, :password, :password_confirmation
   attr_accessible   :admin
+
+  after_create :activate
 
   class << self
 
