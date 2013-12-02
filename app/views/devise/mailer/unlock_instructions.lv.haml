@@ -1,0 +1,8 @@
+%p
+  Sveicināti #{@resource.email}!
+%p Jūsu konts tika bloķēts dēļ pārāk daudziem neveiksmīgiem autentifikācijas mēģinājumiem.
+%p
+  Sekojiet šai saitei, lai atbloķētu savu kontu:
+  = link_to 'Atbloķēt kontu', unlock_url(@resource, unlock_token: @resource.unlock_token)
+
+%p= "Jūsu: #{AppConfig.host_nice}" rescue ""

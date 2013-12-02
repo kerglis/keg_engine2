@@ -1,0 +1,29 @@
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml", "xml:lang" => "en", lang: "en"}
+  %head
+    %meta{name: "author", content: "Ambicode http://www.ambicode.com" }
+    %meta{"http-equiv" => "Content-Type", content: "text/html;charset=UTF-8"}/
+    %title= "#{AppConfig[:site_fullname]}"
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0" }
+
+    %link{rel: "icon", type: "image/png", href: "/icon.png"}
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+
+    = yield :head
+
+  %body
+    .container
+      #header
+        = render "header"
+
+      #content
+        = render "flash_panel"
+        = yield
+
+      #footer
+        = render "footer"
+
+      = render "google_analytics"

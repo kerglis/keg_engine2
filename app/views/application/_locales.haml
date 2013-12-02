@@ -1,0 +1,11 @@
+- relative_root = ENV['RAILS_RELATIVE_URL_ROOT']
+- rails_path = request.fullpath.gsub(relative_root ? relative_root : "", "")
+- path = Rails.application.routes.recognize_path(rails_path) rescue nil
+
+- if @locales.count > 1
+  - @locales.each do |locale|
+    %li{class: (locale == @locale) && "active"}
+      - if path and rails_path != "/"
+        = link_to flag(locale), path.merge({locale: locale})
+      - else
+        = link_to flag(locale), root_url(locale: locale)

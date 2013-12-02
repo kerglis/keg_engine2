@@ -1,0 +1,10 @@
+lv:
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} - veiksmīgi izveidots"
+      update:
+        notice: "%{resource_name} - izmaiņas veiksmīgi saglabātas"
+      destroy:
+        notice: "%{resource_name} - veiksmīgi dzēsts"
+        alert: "%{resource_name} - netika izdzēsts"

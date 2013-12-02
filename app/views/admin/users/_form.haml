@@ -1,0 +1,9 @@
+= f.input :email, :disabled => ! @user.new_record?
+= f.input :first_name
+= f.input :last_name
+
+- if @user.new_record?
+  = f.input :password
+
+= f.input :admin
+

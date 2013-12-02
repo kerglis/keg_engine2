@@ -1,0 +1,16 @@
+- exclude = options[:exclude] || [:swap]
+- events = resource.state_events - exclude rescue resource.state_events
+- state = resource.state
+- url = options[:url]
+- klass = resource.class
+
+- cl = resource.state_class rescue ""
+
+.btn-group
+  %button.btn.btn-mini{class: cl}= tt(klass, state)
+  %button.btn.btn-mini.dropdown-toggle{ class: cl, data: { toggle: "dropdown"} }
+    %span.caret
+
+  %ul.dropdown-menu
+    - events.each do |event|
+      %li= link_to tt(klass, event), "#{url}?state=#{event}", remote: true

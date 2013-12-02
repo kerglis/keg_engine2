@@ -1,0 +1,100 @@
+@import "keg_constants"
+
+h1, h2
+  font-size: 1.75em
+  margin-bottom: 0.5em
+
+h4
+  font-size: 12px
+  line-height: 12px
+
+#content
+  margin-top: 20px
+  height: auto !important
+  min-height: 300px
+  &.admin
+    margin-top: 50px;
+
+#footer
+  border-top: 1px solid $gray
+  margin: 1em 0
+  padding: 0.5em 0
+  text-align: center
+  font-size: 0.9em
+  p
+    margin: 0 0 5px 0
+
+.navbar-inner
+  padding-left: 0
+  padding-right: 0
+
+.logo
+  margin-left: 20px
+  a
+    background: url("logo.png") no-repeat 15px 5px
+    width: 160px
+    height: 24px
+    text-indent: -9999px
+    display: block
+    background-size: 50%
+
+    &.admin
+      width: 160px
+      height: 24px
+      margin: 7px 10px 0 0
+      background: url("logo-admin.png") no-repeat 0 0
+      background-size: 50%
+      float: left
+
+#flash_panel
+  position: fixed
+  z-index: 10000
+  top: 20px
+  left: 50%
+  width: 400px
+  margin-left: -200px
+
+.form-actions
+  border-top: 1px solid $gray
+  background: none
+
+.msg
+  span
+    font-size: 24px
+    font-weight: bold
+
+select, input
+  &.small
+    font-size: 11px
+    padding: 2px
+    line-height: auto
+    height: auto
+    width: auto
+    margin: 0
+
+label
+  abbr[title]
+    color: $red
+    border: none
+
+.control-label
+  &.switch
+    background: url("icons/arrow-000-medium.png") no-repeat 100% 100%
+    padding-right: 20px
+    cursor: pointer
+    width: 125px
+
+  &.open
+    background: url("icons/arrow-270-medium.png") no-repeat 100% 100%
+
+.sortable
+  td, li
+    cursor: move
+
+input
+  &.flag-lv
+    background: url("flags/flag_lv_dim.gif") no-repeat 98% 50%
+  &.flag-ru
+    background: url("flags/flag_ru_dim.gif") no-repeat 98% 50%
+  &.flag-en
+    background: url("flags/flag_en_dim.gif") no-repeat 98% 50%

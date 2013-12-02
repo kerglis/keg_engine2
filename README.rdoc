@@ -1,0 +1,10 @@
+= KegEngine
+
+Rails engine, containing collection of classes, controllers, assets and more... To bootstrap my new projects.
+
+
+== Usage
+
+1. Add it as gem dependency in <tt>Gemfile</tt>
+
+  gem 'keg_engine', :git => 'git@github.com:kerglis/keg_engine.git'

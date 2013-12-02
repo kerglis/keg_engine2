@@ -1,0 +1,10 @@
+/ rename it to _one_object.html.haml
+
+%td.nw
+  = link_to_delete(<%= singular_table_name %>)
+%td.nw
+  = link_to_swap(<%= singular_table_name %>)
+<%- for attribute in attributes -%>
+%td.nw
+  = <%= singular_table_name %>.<%= attribute.name %>
+<%- end -%>

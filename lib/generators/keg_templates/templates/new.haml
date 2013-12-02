@@ -1,0 +1,5 @@
+%h1= tN(<%= class_name %>)
+
+= simple_form_for [:admin, @<%= singular_table_name %>] do |f|
+  = render "form", f: f
+  = render "admin/shared/new_resource_links"

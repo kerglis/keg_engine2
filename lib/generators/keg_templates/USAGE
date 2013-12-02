@@ -1,0 +1,5 @@
+Description:
+    Copy Keg HAML templates for generating scaffolds
+
+Example:
+    rails generate keg_templates

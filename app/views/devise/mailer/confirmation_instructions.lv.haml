@@ -1,0 +1,7 @@
+%p
+  Sveicināti #{@resource.email}!
+%p
+  Apstipriniet savu e-pastu klikšķinot:
+  = link_to 'šeit', confirmation_url(@resource, confirmation_token: @resource.confirmation_token)
+
+%p= "Jūsu: #{AppConfig.host_nice}" rescue ""

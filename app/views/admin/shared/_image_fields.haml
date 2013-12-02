@@ -1,0 +1,19 @@
+- img = f.object
+- no_description ||= false
+- img_style ||= :mini
+
+%li[img]
+  .well.fields
+    = link_to_remove_fields "&times;".html_safe, f, class: "pull-right close", title: t("delete")
+
+    - if img.attachment.path
+      .controls
+        %p= image_tag(img.attachment.url(img_style), alt: "")
+
+    - unless no_description
+      = f.input :description, as: :string, input_html: { class: "span4" }
+
+    .controls
+      = f.file_field :attachment
+      = f.hidden_field :uploadable_id
+      = f.hidden_field :uploadable_type

@@ -1,0 +1,126 @@
+$gray: #999;
+$gray_md: #ddd;
+$gray_lt: #F5F5F5;
+$gray_border: #666;
+
+$gray_dk: #444;
+$grad_from: #333;
+$grad_to: #222;
+
+$grad_from_lt: #ffffff;
+$grad_to_lt: #f5f5f5;
+
+$body_background: #555;
+
+$orange: #db5126;
+$orange_dk: #993300;
+
+$red: #B94A48;
+
+$green_lt: #e6f8dd;
+$green_mid: #99cc99;
+$green_dk: #003300;
+$green: #006600;
+
+.pad_l1 { padding-left: 1em;}
+.pad_r1 { padding-right: 1em;}
+.pad_1 { padding: 1em;}
+.pad_05 { padding: 0.5em;}
+.mrg_l1 { margin-left: 1em;}
+.mrg_r1 { margin-right: 1em;}
+.mrg_t1 { margin-top: 1em;}
+.mrg_1 { margin: 1em;}
+.mrg_0 { margin: 0;}
+
+.brd { border: 1px solid $gray; }
+.brd_bot { border-bottom: 1px solid $gray; }
+.brd_top { border-top: 1px solid $gray; }
+.brd_lft { border-left: 1px solid $gray; }
+.brd_rgt { border-right: 1px solid $gray; }
+
+.r10 { border-radius: 10px;}
+
+.fr { float: right;}
+.pr_1 { width: 1%;}
+.nw { white-space: nowrap;}
+.cb { clear: both; }
+.pagination { margin: 0;}
+td.c, th.c, .c {text-align: center; }
+td.r, th.r, .r {text-align: right; }
+
+span
+{
+  &.inline
+  {
+    display: inline;
+  }
+}
+
+label
+{
+  &.collection_radio_buttons
+  {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+}
+
+a
+{
+  &.switch
+  {
+    padding-left: 16px;
+    &.open { background: url(icons/arrow-315-small.png) no-repeat top left; }
+    &.closed { background: url(icons/arrow-000-small.png) no-repeat top left; }
+  }
+}
+
+.alert-message
+{
+  &.condensed { padding: 0 20px; }
+}
+
+span
+{
+  &.label { a { color: white; &:hover { text-decoration: none; } } }
+}
+
+input
+{
+  &.img {
+    width: auto;
+    border: none;
+    box-shadow: none;
+    -moz-transition: none;
+    vertical-align: middle;
+  }
+
+  &.placeholder
+  {
+    background: url("icons/magnifier-zoom-dim.png") no-repeat 98% 50%;
+    &:focus { background: none }
+  }
+}
+
+label
+{
+  &.inline
+  {
+    text-align: left;
+    width: auto;
+    margin-right: 20px;
+  }
+}
+
+a.active_field_clear
+{
+  display: inline-block;
+  margin: 0 5px;
+  background: url(icons/filter_x.png) no-repeat left 2px;
+  text-indent: -9999px;
+  width: 16px;
+  height: 16px;
+}
+
+.alert-message {h2 { font-size: 16px; } }

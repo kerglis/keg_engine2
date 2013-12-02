@@ -1,0 +1,9 @@
+%h1= t("devise.unlocks.resend_instructions")
+
+= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: "form-horizontal" }) do |f|
+  = devise_error_messages!
+  = f.input :email
+
+  .controls
+    = f.submit t("devise.unlocks.resend_instructions")
+    = render "devise/shared/links"

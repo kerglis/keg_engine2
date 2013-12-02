@@ -1,0 +1,81 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+lv:
+  errors:
+    messages: &devise_messages
+      expired: derīgums beidzies, lūdzu piesakieties jaunam
+      not_found: netika atrasts
+      already_confirmed: ir jau apstiprināts, lūdzu mēģiniet pieslēgties
+      permission_denied: Nepietiekams pieejas līmenis
+      not_locked: netika nobloķēts
+      not_saved:
+        one: "%{resource} netika saglabāts 1 kļūdas dēļ:"
+        other: "%{resource} netika saglabāts %{count} kļūdu dēļ:"
+
+  devise:
+    messages:
+      <<: *devise_messages
+
+    sign_in: Autorizēties
+    sign_up: Piereģistrēties
+    sign_in_with: "Autorizēties caur <b>%{provider}</b>"
+    logout: Iziet
+    remember_me: Pierakstīties uz ilgāku laiku
+    profile: Profils
+    edit_account: Rediģēt profilu
+    resend_confirmation: Nosūtīt konta aktivizēšanas instrukcijas
+
+    oauth_callbacks:
+      user:
+        success: "Veiksmīgi autorizēts no %{kind} konta."
+        failure: "Autorizācija no %{kind} konta neizdevās: %{reason}."
+
+    failure:
+      already_authenticated: Jūs jau esiet pieslēdzies.
+      unauthenticated: Jums ir jāpieslēdzas vai jāreģistrējas, lai turpinātu.
+      unconfirmed: Jums ir jāapstiprina reģistrācijas epasts, lai turpinātu.
+      locked: Jūsu lietotājs ir nobloķēts.
+      invalid: Nekorekts epasts vai parole.
+      invalid_token: Nekoreta autentifikācijas atslēga.
+      timeout: Jūsu sesijas laiks ir beidzies. Lūdzu pieslēdzieties vēlreiz, lai turpinātu.
+      inactive: Jūsu lietotajs vēl nav aktivizēts.
+      not_found_in_database: Lietotājs netika atrasts datubāzē.
+
+    sessions:
+      signed_in: Veiksmīgi pieslēdzies.
+      signed_out: Veiksmīgi atslēdzies.
+    passwords:
+      send_instructions: Pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā nomainīt jūsu paroli.
+      updated: Jūsu parole ir veiksmīgi nomainīta. Jūs esat pieslēdzies.
+      send_paranoid_instructions: Ja Jūsu parole eksistē mūsu datubāzē, tad jums tiks nosūtīts paroles atjaunošanas apraksts uz epastu
+      forgot_your_password: Aizmirsi paroli?
+      send_reset_instructions: Sūtīt paroles nomaiņas instrukcijas
+      change_password: Mainīt paroli
+    confirmations:
+      send_instructions: Pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā apstiprināt Jūsu lietotāju.
+      send_paranoid_instructions: Ja Jūsu parole eksistē mūsu datubāzē, tad pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā apstiprināt Jūsu lietotāju.
+      confirmed: Jūsu lietotājs ir veiksmīgi apstiprināts. Jūs esat pieslēdzies.
+      didnt_receive_instructions: Nesaņēmāt konta aktivizēšanas instrukcijas?
+    registrations:
+      signed_up: Laipni lūgti! Jūs esiet veiksmīgi reģistrējies.
+      updated: Jūsu lietotājs ir veiksmīgi labots.
+      destroyed: Uz redzēšanos! Jūsu lietotājs ir veiksmīgi dzēsts. Ceram Jūs atkal redzēt drīzumā.
+      signed_up_but_unconfirmed: Apstiprinājums par reģistrāciju nosūtīts uz jūsu e-pastu. Atveriet tur norādīto saiti, lai aktivizētu kontu.
+      signed_up_but_inactive: Jūs esiet veiksmīgi reģistrējies. Tomēr Jūs neesiet pieslēdzies, jo jūsu konts nav aktivizēts.
+      signed_up_but_locked: Jūs esiet veiksmīgi reģistrējies. Tomēr Jūs neesiet pieslēdzies, jo jūsu konts ir nobloķēts.
+    unlocks:
+      send_instructions: Pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā atbloķēt Jūsu lietotāju.
+      unlocked: Jūsu lietotājs ir veiksmīgi atbloķēts. Jūs esat pieslēdzies.
+      send_paranoid_instructions: Ja Jūsu parole eksistē mūsu datubāzē, tad pāris minūšu laikā uz Jūsu epastu tiks nosūtīts apraksts, kā atbloķēt jūsu lietotāju.
+      didnt_receive_instructions: Nesaņēmāt konta atbloķēšanas instrukcijas?
+
+    omniauth_callbacks:
+      success: "Veiksmīgi autorizējis ar %{kind} lietotāju."
+      failure: "Neizdevās autorizeties ar %{kind} lietotāju. Iemesls: %{reason}."
+    mailer:
+      confirmation_instructions:
+        subject: Konta apstiprināšanas informācija
+      reset_password_instructions:
+        subject: Paroles nomainīšanas informācija
+      unlock_instructions:
+        subject: Atbloķēšanas informācija

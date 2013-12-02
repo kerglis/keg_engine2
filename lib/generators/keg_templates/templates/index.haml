@@ -1,0 +1,17 @@
+= render "admin/shared/toolbar_button", text: tN(<%= class_name %>), link: new_resource_url
+
+%h1= t2(<%= class_name %>)
+
+%table.table.table-striped.table-condensed
+  %thead
+    = form_for @search, url: filter_admin_<%= plural_table_name %>_path do |f|
+      %tr
+        %th.pr_1 &nbsp;
+        %th.pr_1 &nbsp;
+        <%- for attribute in attributes -%>
+        %th.nw.pr_1= f.text_field :<%= attribute.name %>_like, placeholder: tt(<%= class_name %>, :<%= attribute.name %>), class: "small", :"data-clearable-field" => true
+        <%- end -%>
+  %tbody
+    = render @<%= plural_table_name %>
+
+= will_paginate(@<%= plural_table_name %>)

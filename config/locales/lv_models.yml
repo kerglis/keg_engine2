@@ -1,0 +1,18 @@
+lv:
+  activerecord:
+    models:
+      user:
+        one: Lietotājs
+        other: Lietotāji
+
+    attributes:
+      user:
+        first_name: Vārds
+        last_name: Uzvārds
+        full_name: Vārds Uzvārds
+        email: E-pasts
+        password: Parole
+        password_confirmation: Parole vēlreiz
+        remember_me: Atcerēties mani
+        edit_profile: <i class='icon-pencil'></i> Labot profilu
+        logout: <i class='icon-eject'></i> Iziet

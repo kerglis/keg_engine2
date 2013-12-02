@@ -1,0 +1,68 @@
+lv:
+
+  new: "Izveidot"
+  save: "Saglabāt"
+  welcome: "Sveiki, %{name}"
+  profile_name: "Profils: %{name}"
+  male: "vīr."
+  female: "siev."
+  all_rights_reserved: "Visas tiesības paturētas"
+
+  edit_model: "Rediģēt: %{model}"
+  create_model: "Jauns: %{model}"
+
+  navi:
+    to_top: Uz augšu
+
+  tree:
+    title: "Koks"
+    error: "Pieprasītā izmaiņa netika pieņemta un koks tika atgriezts uz iepriekšējo stāvokli. Mēģiniet vēlreiz."
+    instruction: "* Right-click uz mapi - lai piekļūtu izvēlnei"
+
+  file_upload:
+    select_file: Datne
+    change: Mainīt
+    remove: Dzēst
+
+  error:
+    no_image: "nav attēla"
+    no_images: "nav attēlu"
+    general_error: "Kļūda"
+    routing_error: "Lapa <strong>%{route}</strong> nav atrasta!"
+    err_404:
+      title: "Nav atrasts"
+      text: "Jūsu pieprasītā lapa nav atrasta"
+
+  public_area: "Publiskā daļa"
+  admin_area: "Admin daļa"
+
+  state:
+    choose_state: "Izvēlēties statusu"
+    change_to: "Mainīt statusu uz: %{state}"
+    changed_to: "Statuss nomainīts uz: %{state}"
+    new: "Jauns"
+    accepted: "Akceptēts"
+    rejected: "Noraidīts"
+    active: "Aktīvs"
+    inactive: "Neaktīvs"
+
+
+  back: "« Atpakaļ"
+  back_to_collection: "« Atpakaļ uz sarakstu"
+
+  create: "Izveidot jaunu"
+  create_new: "Jauns: %{model}"
+  edit: "Rediģēt"
+  edit_existing: "Rediģēt: %{model}"
+  search: "Meklēt"
+
+  confirm_deletion: "Dzēšanas apstiprināšana"
+  confirm_delete: "Tiešām dzēst?"
+  confirm_restore: "Tiešām atjaunot?"
+  confirm_deactivate: "Tiešām deaktivizēt?"
+  server_error: "Serveris atgrieza kļūdu"
+
+  will_paginate:
+    next_label: "Tālāk &rarr;"
+    previous_label: "&larr; Atpakaļ"
+    page_gap: "..."
