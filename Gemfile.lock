@@ -12,6 +12,7 @@ PATH
       less-rails
       meta_search
       omniauth-facebook
+      redactor-rails
       rspec-rails
       sass-rails
       simple_form
