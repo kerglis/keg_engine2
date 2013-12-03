@@ -8,7 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 private
 
   def collection
-    @search = <%= class_name %>.metasearch(params[:search])
+    @search = <%= class_name %>.search(params[:q])
     @<%= plural_table_name %> = @search.paginate(per_page: @rpp, page: params[:page])
   end
 

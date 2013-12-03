@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'less-rails'
   s.add_dependency 'acts_as_list'
   s.add_dependency 'awesome_nested_set'
+  s.add_dependency 'paperclip'
 
   s.add_dependency 'devise'
   s.add_dependency 'cancan'
@@ -29,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'config_spartan'
   s.add_dependency 'simple_form'
   s.add_dependency 'state_machine'
-  s.add_dependency 'meta_search'
+  s.add_dependency 'ransack'
   s.add_dependency 'will_paginate'
   s.add_dependency 'inherited_resources'
   s.add_dependency 'rspec-rails'

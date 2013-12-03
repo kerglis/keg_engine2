@@ -4,13 +4,13 @@
 
 %table.table.table-striped.table-condensed
   %thead
-    = form_for @search, url: filter_admin_users_path, html: {id: "search_form", method: :post } do |f|
+    = search_form_for [ :admin, @q ] do |f|
       %tr
         %th.pr_1 &nbsp;
-        %th.nw.pr_1= f.text_field :email_like, placeholder: tt(User, :email), class: "small", :"data-clearable-field" => true
-        %th.nw= f.text_field :first_name_or_last_name_like, placeholder: tt(User, :full_name), class: "small", :"data-clearable-field" => true
+        %th.nw.pr_1= f.text_field :email_cont, placeholder: tt(User, :email), class: "small", :"data-clearable-field" => true
+        %th.nw= f.text_field :first_name_or_last_name_cont, placeholder: tt(User, :full_name), class: "small", :"data-clearable-field" => true
 
   %tbody
     = render @users
 
-= will_paginate(@users)
+=# will_paginate(@users)

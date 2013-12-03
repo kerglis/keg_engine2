@@ -3,7 +3,7 @@ module StdState
   def self.included(base)
     base.class_eval do
 
-      scope :active,  where(state: :active)
+      scope :active, -> { where(state: :active) }
 
       state_machine initial: :inactive do
 
