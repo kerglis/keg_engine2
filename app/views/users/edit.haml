@@ -1,4 +1,4 @@
 %h1= t("devise.profile")
 
-= simple_form_for @user do |f|
+= simple_form_for @user, url: user_path do |f|
   = render "form", f: f

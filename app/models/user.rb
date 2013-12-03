@@ -2,21 +2,27 @@ class User < ActiveRecord::Base
 
   include StdState
 
-  devise :database_authenticatable, :rememberable, :registerable, :recoverable, :trackable, :validatable, :omniauthable
-
-  attr_accessible   :email, :first_name, :last_name, :password, :password_confirmation
-  attr_accessible   :admin
+  devise :database_authenticatable, :rememberable, :registerable, :recoverable, :trackable, :validatable, :omniauthable, :confirmable
 
   after_create :activate
 
   class << self
+
+    def permitted_params
+      [
+        :first_name, :last_name, :phone, :password,
+        :is_company, :company_name,  :company_reg_no, :company_address, :company_bank_info,
+        :address_city, :address_street, :address_zip
+      ]
+    end
 
     def find_for_facebook_oauth(access_token, signed_in_resource = nil)
       data = access_token.extra.raw_info
       if user = find_by_email(data["email"])
         user
       else
-        create!(read_oauth_params(data))
+        user = create!(read_oauth_params(data))
+        user.confirm!
       end
     end
 

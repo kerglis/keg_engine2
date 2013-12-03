@@ -1,4 +1,4 @@
-class OauthCallbacksController < Devise::OmniauthCallbacksController
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   include SetLocale
 
