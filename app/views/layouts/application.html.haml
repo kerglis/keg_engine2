@@ -9,7 +9,6 @@
     %link{rel: "icon", type: "image/png", href: "/icon.png"}
 
     = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
     = csrf_meta_tag
 
     = yield :head
@@ -27,4 +26,7 @@
       #footer
         = render "footer"
 
-      = render "google_analytics"
+    = javascript_include_tag "application"
+    = yield :inline_javascript
+
+    = render "google_analytics"
