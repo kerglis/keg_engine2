@@ -113,7 +113,7 @@ bind_clearable_fields = ->
   $("[data-clearable-field]").each ->
     input = $(this)
     form = (if input.length > 0 then $(input[0].form) else $())
-    link = $("<a href=\"#\" class=\"active_field_clear\">x</a>")
+    link = $("<a href=\"#\" class=\"active_field_clear\"><i class='fa fa-times-circle'></i></a>")
     $(this).after link
     input.on
       change: ->

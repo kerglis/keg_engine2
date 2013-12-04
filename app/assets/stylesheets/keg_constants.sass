@@ -125,10 +125,6 @@ input
     box-shadow: none
     -moz-transition: none
     vertical-align: middle
-  &.placeholder
-    background: url("icons/magnifier-zoom-dim.png") no-repeat 98% 50%
-    &:focus
-      background: none
 
 label
   &.inline
@@ -136,13 +132,10 @@ label
     width: auto
     margin-right: 20px
 
-a.active_field_clear
-  display: inline-block
-  margin: 0 5px
-  background: url(icons/filter_x.png) no-repeat left 2px
-  text-indent: -9999px
-  width: 16px
-  height: 16px
+a
+  &.active_field_clear
+    color: $gray
+    margin: 0 5px
 
 .alert-message
   h2
