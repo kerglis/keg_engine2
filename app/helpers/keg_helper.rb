@@ -23,7 +23,7 @@ module KegHelper
     options.assert_valid_keys(:url, :confirm, :label)
     options.reverse_merge! url: resource_url(resource) unless options.key? :url
     options.reverse_merge! confirm: t("confirm_delete")
-    options.reverse_merge! label: icon("minus-circle", title: I18n.t("delete")) unless  options.key? :label
+    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless  options.key? :label
 
     in_params = {
       remote:    true,
@@ -34,8 +34,8 @@ module KegHelper
     link_to(options[:label], options[:url], in_params)
   end
 
-  def fa_icon(icon)
-    "<i class='fa fa-#{icon}'></i>".html_safe
+  def fa_icon(icon, extra_class = "")
+    "<i class='fa fa-#{icon} #{extra_class}'></i>".html_safe
   end
 
   def twicon(icon)
@@ -142,11 +142,11 @@ module KegHelper
   end
 
   def icon_active(options = {})
-    icon((options[:icon_active]) ? options[:icon_active] : "tick-circle")
+    fa_icon("check-circle", "fa-green")
   end
 
   def icon_inactive(options = {})
-    icon((options[:icon_inactive]) ? options[:icon_inactive] : "tick-circle-dim")
+    fa_icon("check-circle", "fa-gray")
   end
 
   def state_icon(resource)
