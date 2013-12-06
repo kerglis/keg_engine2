@@ -13,7 +13,7 @@ protected
   end
 
   def permitted_params
-    params.permit( user: User.permitted_params )
+    params.permit( user: User.permitted_params + [ :admin ] )
   end
 
 end
