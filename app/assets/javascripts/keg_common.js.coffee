@@ -237,6 +237,11 @@ $ ->
         $to_url = $url.replace /__template__/, $(this).val()
         window.location = $to_url
 
+  $("[data-reset-form]").on
+    click: ->
+      $(@).parents("form").find("input[type='text'], textarea, select, input[type='password']").val("")
+      false
+
   $("[data-token-input]").each ->
     $(this).tokenInput $(this).data("token-input"),
       theme: "facebook"

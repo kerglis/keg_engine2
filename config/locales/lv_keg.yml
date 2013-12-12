@@ -11,6 +11,8 @@ lv:
   edit_model: "Rediģēt: %{model}"
   create_model: "Jauns: %{model}"
 
+  reset_form: Notīrīt
+
   navi:
     to_top: Uz augšu
 
@@ -23,6 +25,11 @@ lv:
     select_file: Datne
     change: Mainīt
     remove: Dzēst
+
+  records_found:
+    one: "Atrasts %{count} ieraksts"
+    other: "Atrasti %{count} ieraksti"
+  no_records_found: Nav atrasti atbilstoši ieraksti
 
   error:
     no_image: "nav attēla"

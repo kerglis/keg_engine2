@@ -2,9 +2,15 @@ class Asset < ActiveRecord::Base
 
   belongs_to :uploadable, polymorphic: true
 
-  attr_accessible :attachment, :description, :uploadable_id, :uploadable_type, :uploadable
-
   acts_as_list
+
+  class << self
+
+    def permitted_params
+      [ :id, :attachment, :uploadable_type, :uploadable_id ]
+    end
+
+  end
 
   def scope_condition
     "assets.uploadable_id = #{uploadable_id} and assets.uploadable_type='#{uploadable_type}'"

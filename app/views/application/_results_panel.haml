@@ -1,0 +1,7 @@
+- search_params ||= params[:q]
+
+- unless collection.blank?
+  .alert.alert-info= t("records_found", count: collection.try(:total_entries))
+- else
+  - unless search_params.blank?
+    .alert.alert-error= t("no_records_found")

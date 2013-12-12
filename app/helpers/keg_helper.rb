@@ -1,5 +1,9 @@
 module KegHelper
 
+  def reset_form_button
+    "<button class='btn' data-reset-form='true'><i class='fa fa-times'></i> #{t("reset_form")}</button>".html_safe
+  end
+
   def pretty_photo(image, image_style, image_params = {})
     link_to(image_tag(image.attachment.url(image_style), image_params), image.attachment.url(:original), rel: "prettyPhoto[#{image.uploadable.id}]", title: image.description) if image
   end
