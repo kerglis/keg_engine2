@@ -1,7 +1,7 @@
 module KegHelper
 
   def reset_form_button
-    "<button class='btn' data-reset-form='true'><i class='fa fa-times'></i> #{t("reset_form")}</button>".html_safe
+    "<button class='btn' data-reset-form='true'><i class='fa fa-times'></i> <span class='hidden-phone'>#{t("reset_form")}</span></button>".html_safe
   end
 
   def pretty_photo(image, image_style, image_params = {})
@@ -90,35 +90,43 @@ module KegHelper
     options.reverse_merge! url:      resource_url(resource)      unless options.key? :url
     options.reverse_merge! action:   :swap_field                 unless options.key? :action
     options.reverse_merge! html: {}                              unless options.key? :html
+    options.reverse_merge! active_class: "fa-green"              unless options.key? :active_class
+    options.reverse_merge! inactive_class: "fa-gray"             unless options.key? :inactive_class
 
     field_name = options[:field]
 
     html[:title] ||= I18n.t("swap")
+    html[:remote] = true
+
     path = Rails.application.routes.recognize_path(options[:url])
     swap_path = {controller: path[:controller], id: resource.to_param, action: options[:action], field: field_name }
-    icn = (resource[field_name]) ? icon_active(options) : icon_inactive(options)
+    icn = (resource[field_name]) ? fa_icon(options[:icon], options[:active_class]) : fa_icon(options[:icon], options[:inactive_class])
 
-    link_to(icn, swap_path, { remote: true }, html)
-  rescue
-    "-"
+    link_to(icn, swap_path, html)
+  rescue Exception => e
+    icon("exclamation-red", title: e.to_s)
   end
 
   def link_to_swap_preference(resource, options = {}, html = {})
     options.reverse_merge! url:      resource_url(resource)      unless options.key? :url
     options.reverse_merge! action:   :swap_preference            unless options.key? :action
     options.reverse_merge! html: {}                              unless options.key? :html
+    options.reverse_merge! active_class: "fa-green"              unless options.key? :active_class
+    options.reverse_merge! inactive_class: "fa-gray"             unless options.key? :inactive_class
 
     pref_name = options[:pref]
 
     html[:title] ||= I18n.t("swap")
+    html[:remote] = true
+
     path = Rails.application.routes.recognize_path(options[:url])
     swap_path = {controller: path[:controller], id: resource.to_param, action: options[:action], pref: pref_name }
 
-    icn = (resource.prefs[pref_name]) ? icon_active(options) : icon_inactive(options)
+    icn = (resource.prefs[pref_name]) ? fa_icon(options[:icon], options[:active_class]) : fa_icon(options[:icon], options[:inactive_class])
 
-    link_to(icn, swap_path, {remote: true}, html)
-#  rescue
-#    "-"
+    link_to(icn, swap_path, html)
+  rescue Exception => e
+    icon("exclamation-red", title: e.to_s)
   end
 
   def state_events_select(resource, options = {}, html = {})
