@@ -1,22 +1,26 @@
 %ul.nav.pull-right
   %li.dropdown
     %a.dropdown-toggle{href: "#", :"data-toggle" => "dropdown"}
-      %i.fa.fa-user
-      - if current_user
-        %span.hidden-phone= current_user.greeting
+      %i.fa.fa-cog
+      / - if current_user
+      /   %span.hidden-phone= current_user.greeting
       %b.caret
 
     - if current_user
       %ul.dropdown-menu
-        %li= link_to tt(User, :edit_profile), user_url
-        %li= link_to tt(User, :logout), destroy_user_session_url, method: :delete
+        %li
+          = link_to fa_icon("pencil") + " " + current_user.greeting, user_url
+        %li
+          = link_to fa_icon("sign-out") + " " + tt(User, :logout), destroy_user_session_url, method: :delete
 
         - if current_user && current_user.is_admin?
           %li.divider
           - if admin_namespace?
-            %li= link_to t("public_area"), root_url
+            %li
+              = link_to t("public_area"), root_url, target: :blank
           - else
-            %li= link_to t("admin_area"), admin_root_url
+            %li
+              = link_to fa_icon("cogs") + " " + t("admin_area"), admin_root_url, target: :blank
 
     - else
       %ul.dropdown-menu

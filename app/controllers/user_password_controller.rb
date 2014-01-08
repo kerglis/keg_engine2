@@ -27,4 +27,8 @@ private
     @user = current_user
   end
 
+  def permitted_params
+    params.permit( user: User.permitted_params )
+  end
+
 end

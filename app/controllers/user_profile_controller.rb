@@ -22,8 +22,8 @@ private
     @user = current_user
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_age, :phone)
+  def permitted_params
+    params.permit( user: User.permitted_params )
   end
 
 end

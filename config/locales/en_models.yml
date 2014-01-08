@@ -14,5 +14,5 @@ en:
         password: Password
         password_confirmation: Confirm password
         remember_me: Remember me
-        edit_profile: <i class='icon-pencil'></i> Edit profile
-        logout: <i class='icon-eject'></i> Log-out
+        edit_profile: Edit profile
+        logout: Log-out

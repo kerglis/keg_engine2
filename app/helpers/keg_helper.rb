@@ -16,28 +16,6 @@ module KegHelper
     render "admin/shared/icon_boolean_selector", f: f, method: method, title_true: title_true, title_false: title_false, icon_true: icon_true, icon_false: icon_false
   end
 
-  def link_to_edit(resource, options = {})
-    editable = resource.editable? rescue true # ja nav f-cija - ļaujam rediģēt
-    options.reverse_merge! url: edit_resource_url(resource) unless options.key? :url
-    text = options[:text] rescue ""
-    link_to(text.to_s + icon('edit', title: I18n.t("edit")), options[:url], options.update(class: 'iconlink')) if editable
-  end
-
-  def link_to_destroy(resource, options = {})
-    options.assert_valid_keys(:url, :confirm, :label)
-    options.reverse_merge! url: resource_url(resource) unless options.key? :url
-    options.reverse_merge! confirm: t("confirm_delete")
-    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless  options.key? :label
-
-    in_params = {
-      remote:    true,
-      method:    :delete,
-      data:      { confirm:   options[:confirm] }
-    }
-
-    link_to(options[:label], options[:url], in_params)
-  end
-
   def fa_icon(icon, extra_class = "")
     "<i class='fa fa-#{icon} #{extra_class}'></i>".html_safe
   end
@@ -52,6 +30,23 @@ module KegHelper
 
   def link_to_delete(resource, options = {})
     link_to_destroy(resource, options)
+  end
+
+  def link_to_destroy(resource, options = {})
+    return if resource.respond_to?(:can_destroy?) and ! resource.can_destroy?
+
+    options.assert_valid_keys(:url, :confirm, :label)
+    options.reverse_merge! url: resource_url(resource) unless options.key? :url
+    options.reverse_merge! confirm: t("confirm_delete")
+    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless  options.key? :label
+
+    in_params = {
+      remote:    true,
+      method:    :delete,
+      data:      { confirm:   options[:confirm] }
+    }
+
+    link_to(options[:label], options[:url], in_params)
   end
 
   def link_to_remove_fields(name, f, options = {})
@@ -138,7 +133,6 @@ module KegHelper
     render "state_events_select", resource: resource, options: options, html: html
   end
 
-
   def flag(locale, options = {})
     image_tag("flags/#{locale}.png", options)
   end
@@ -164,9 +158,9 @@ module KegHelper
   def state_icon(resource)
     case resource.state
     when "active"
-      icon("tick-circle")
+      icon_active
     when "inactive"
-      icon("cross-circle")
+      icon_inactive
     end
   end
 
@@ -194,7 +188,7 @@ module KegHelper
     name = options[:name] || t2(klass)
 
     if can? :read, klass
-      link = link_to( name+ options[:extra_html], destination_url)
+      link = link_to((name + options[:extra_html]).html_safe, destination_url)
 
       css_classes = []
 
@@ -209,7 +203,7 @@ module KegHelper
       if options[:css_class]
         css_classes << options[:css_class]
       end
-      content_tag('li', link, class: css_classes.join(' '))
+      content_tag('li', link.html_safe, class: css_classes.join(' '))
     end
   end
 
