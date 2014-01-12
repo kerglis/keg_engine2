@@ -13,4 +13,4 @@
 
   %ul.dropdown-menu
     - events.each do |event|
-      %li= link_to tt(klass, event), "#{url}?state=#{event}", remote: true
+      %li= link_to tt(klass, event), [url, "state=#{event}"].join(url =~ /\?/ ? "&" : "?"), remote: true
