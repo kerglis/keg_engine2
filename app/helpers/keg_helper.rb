@@ -24,6 +24,10 @@ module KegHelper
     "<i class='icon-#{icon}'></i>".html_safe
   end
 
+  def exception_icon(e)
+    link_to fa_icon("exclamation"), "#", title: e.to_s
+  end
+
   def phone_to_top
     "<div class='visible-phone'><a href='#top'>#{fa_icon "arrow-up"} #{t("navi.to_top")}</a></div>".html_safe
   end
@@ -48,7 +52,7 @@ module KegHelper
 
     link_to(options[:label], options[:url], in_params)
   rescue Exception => e
-    "<!-- #{e.to_s} -->"
+    exception_icon(e)
   end
 
   def link_to_remove_fields(name, f, options = {})
@@ -82,7 +86,7 @@ module KegHelper
 
     link_to icn, swap_path, in_options
   rescue Exception => e
-    "<!-- #{e.to_s} -->"
+    exception_icon(e)
   end
 
   def link_to_swap_field(resource, options = {}, html = {})
@@ -103,7 +107,7 @@ module KegHelper
 
     link_to(icn, swap_path, html)
   rescue Exception => e
-    "<!-- #{e.to_s} -->"
+    exception_icon(e)
   end
 
   def link_to_swap_preference(resource, options = {}, html = {})
@@ -125,7 +129,7 @@ module KegHelper
 
     link_to(icn, swap_path, html)
   rescue Exception => e
-    "<!-- #{e.to_s} -->"
+    exception_icon(e)
   end
 
   def state_events_select(resource, options = {}, html = {})
