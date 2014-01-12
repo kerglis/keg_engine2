@@ -16,20 +16,20 @@ module KegHelper
     render "admin/shared/icon_boolean_selector", f: f, method: method, title_true: title_true, title_false: title_false, icon_true: icon_true, icon_false: icon_false
   end
 
-  def fa_icon(icon, extra_class = "")
-    "<i class='fa fa-#{icon} #{extra_class}'></i>".html_safe
-  end
+  # def fa_icon(icon, extra_class = "")
+  #   "<i class='fa fa-#{icon} #{extra_class}'></i>".html_safe
+  # end
 
   def twicon(icon)
     "<i class='icon-#{icon}'></i>".html_safe
   end
 
   def exception_icon(e)
-    link_to fa_icon("exclamation-triangle"), "#", title: e.to_s
+    link_to fa_icon("exclamation-triangle"), "#", title: e.to_s + e.backtrace.join("\n")
   end
 
   def phone_to_top
-    "<div class='visible-phone'><a href='#top'>#{fa_icon "arrow-up"} #{t("navi.to_top")}</a></div>".html_safe
+    "<div class='visible-phone'><a href='#top'>#{fa_icon("arrow-up")} #{t("navi.to_top")}</a></div>".html_safe
   end
 
   def link_to_delete(resource, options = {})
@@ -42,7 +42,6 @@ module KegHelper
     options.assert_valid_keys(:url, :confirm, :label)
     options.reverse_merge! url: resource_url(resource) unless options.key?(:url)
     options.reverse_merge! confirm: t("confirm_delete")
-    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless options.key?(:label)
 
     in_params = {
       remote:    true,
@@ -50,7 +49,7 @@ module KegHelper
       data:      { confirm:   options[:confirm] }
     }
 
-    link_to(options[:label], options[:url], in_params)
+    link_to(fa_icon("times-circle", class: "fa-red"), options[:url], in_params)
   rescue Exception => e
     exception_icon(e)
   end
@@ -76,7 +75,7 @@ module KegHelper
     path = Rails.application.routes.recognize_path(options[:url])
     swap_path = {controller: path[:controller], id: resource.to_param, action: options[:action] }
 
-    icn = (options[:state])       ? icon_active(options) : icon_inactive(options)
+    icn = (options[:state])       ? icon_active : icon_inactive
     in_options = {
       method: :get,
       data: { confirm: options[:confirm] },
@@ -103,7 +102,7 @@ module KegHelper
 
     path = Rails.application.routes.recognize_path(options[:url])
     swap_path = {controller: path[:controller], id: resource.to_param, action: options[:action], field: field_name }
-    icn = (resource[field_name]) ? fa_icon(options[:icon], options[:active_class]) : fa_icon(options[:icon], options[:inactive_class])
+    icn = (resource[field_name]) ? fa_icon(options[:icon], class: options[:active_class]) : fa_icon(options[:icon], class: options[:inactive_class])
 
     link_to(icn, swap_path, html)
   rescue Exception => e
@@ -125,7 +124,7 @@ module KegHelper
     path = Rails.application.routes.recognize_path(options[:url])
     swap_path = {controller: path[:controller], id: resource.to_param, action: options[:action], pref: pref_name }
 
-    icn = (resource.prefs[pref_name]) ? fa_icon(options[:icon], options[:active_class]) : fa_icon(options[:icon], options[:inactive_class])
+    icn = (resource.prefs[pref_name]) ? fa_icon(options[:icon], class: options[:active_class]) : fa_icon(options[:icon], class: options[:inactive_class])
 
     link_to(icn, swap_path, html)
   rescue Exception => e
@@ -155,12 +154,12 @@ module KegHelper
     image_tag("icons/#{icon_name}.png", options)
   end
 
-  def icon_active(options = {})
-    fa_icon("check-circle", "fa-green")
+  def icon_active
+    fa_icon("check-circle", class: "fa-green")
   end
 
-  def icon_inactive(options = {})
-    fa_icon("check-circle", "fa-gray")
+  def icon_inactive
+    fa_icon("check-circle", class: "fa-gray")
   end
 
   def state_icon(resource)
