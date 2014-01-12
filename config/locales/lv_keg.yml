@@ -63,11 +63,13 @@ lv:
   edit_existing: "Rediģēt: %{model}"
   search: "Meklēt"
 
-  confirm_deletion: "Dzēšanas apstiprināšana"
-  confirm_delete: "Tiešām dzēst?"
-  confirm_restore: "Tiešām atjaunot?"
-  confirm_deactivate: "Tiešām deaktivizēt?"
-  server_error: "Serveris atgrieza kļūdu"
+  confirm_deletion: Dzēšanas apstiprināšana
+  confirm:
+    delete: Tiešām dzēst?
+    restore: Tiešām atjaunot?
+    deactivate: Tiešām deaktivizēt?
+
+  server_error: Serveris atgrieza kļūdu
 
   will_paginate:
     next_label: "Tālāk &rarr;"
