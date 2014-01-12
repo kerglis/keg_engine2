@@ -36,9 +36,9 @@ module KegHelper
     return if resource.respond_to?(:can_destroy?) and ! resource.can_destroy?
 
     options.assert_valid_keys(:url, :confirm, :label)
-    options.reverse_merge! url: resource_url(resource) unless options.key? :url
+    options.reverse_merge! url: resource_url(resource) unless options.key?(:url)
     options.reverse_merge! confirm: t("confirm_delete")
-    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless  options.key? :label
+    options.reverse_merge! label: fa_icon("times-circle", "fa-red") unless options.key?(:label)
 
     in_params = {
       remote:    true,
@@ -47,6 +47,8 @@ module KegHelper
     }
 
     link_to(options[:label], options[:url], in_params)
+  rescue Exception => e
+    "<!-- #{e.to_s} -->"
   end
 
   def link_to_remove_fields(name, f, options = {})
@@ -79,6 +81,8 @@ module KegHelper
     in_options.delete(:data) unless options[:state]
 
     link_to icn, swap_path, in_options
+  rescue Exception => e
+    "<!-- #{e.to_s} -->"
   end
 
   def link_to_swap_field(resource, options = {}, html = {})
@@ -99,7 +103,7 @@ module KegHelper
 
     link_to(icn, swap_path, html)
   rescue Exception => e
-    icon("exclamation-red", title: e.to_s)
+    "<!-- #{e.to_s} -->"
   end
 
   def link_to_swap_preference(resource, options = {}, html = {})
@@ -121,7 +125,7 @@ module KegHelper
 
     link_to(icn, swap_path, html)
   rescue Exception => e
-    icon("exclamation-red", title: e.to_s)
+    "<!-- #{e.to_s} -->"
   end
 
   def state_events_select(resource, options = {}, html = {})
