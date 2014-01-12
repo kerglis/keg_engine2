@@ -25,7 +25,7 @@ module KegHelper
   end
 
   def exception_icon(e)
-    link_to fa_icon("exclamation"), "#", title: e.to_s
+    link_to fa_icon("exclamation-triangle"), "#", title: e.to_s
   end
 
   def phone_to_top
