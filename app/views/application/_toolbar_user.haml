@@ -1,9 +1,9 @@
 %ul.nav.pull-right
   %li.dropdown
     %a.dropdown-toggle{href: "#", :"data-toggle" => "dropdown"}
+      - if current_user
+        %span.hidden-phone= current_user.greeting
       %i.fa.fa-cog
-      / - if current_user
-      /   %span.hidden-phone= current_user.greeting
       %b.caret
 
     - if current_user
