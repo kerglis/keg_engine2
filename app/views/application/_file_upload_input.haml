@@ -1,7 +1,7 @@
 .fileupload.fileupload-new{"data-provides" => "fileupload"}
   .input-append
     .uneditable-input.span3
-      %i.icon-file.fileupload-exists
+      = fa_icon("file", class: "fileupload-exists")
       %span.fileupload-preview
     %span.btn.btn-file
       %span.fileupload-new= t("file_upload.select_file")

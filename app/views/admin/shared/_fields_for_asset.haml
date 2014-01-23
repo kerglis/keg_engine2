@@ -11,12 +11,11 @@
     .controls
       = fi.file_field :attachment
       - unless asset_obj.new_record?
-        %div{id: asset_type.to_s}
-          .m05
-            - case asset_type
-            - when :attachment_file
-              = icon(asset_obj.icon)
-              = asset_obj.attachment_file_name
-            - else
-              = link_to image_tag(asset_obj.attachment.url(thumb_size), alt: ""), asset_obj.attachment.url(normal_size), rel: "prettyPhoto[]"
-            = link_to(icon("minus-circle", title: I18n.t("delete")), delete_url, { remote: true, confirm: t("confirm.delete") })
+        %div{id: asset_type.to_s, style: "margin-top: 5px"}
+          - case asset_type
+          - when :attachment_file
+            = icon(asset_obj.icon)
+            = asset_obj.attachment_file_name
+          - else
+            = link_to image_tag(asset_obj.attachment.url(thumb_size), alt: ""), asset_obj.attachment.url(normal_size), rel: "prettyPhoto[]"
+          = link_to(fa_icon("times-circle", class: "fa-red"), delete_url, { remote: true, confirm: t("confirm.delete") })
