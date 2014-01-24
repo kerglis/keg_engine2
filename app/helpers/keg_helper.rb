@@ -16,6 +16,10 @@ module KegHelper
     render "admin/shared/icon_boolean_selector", f: f, method: method, title_true: title_true, title_false: title_false, icon_true: icon_true, icon_false: icon_false
   end
 
+  def ransack_boolean(f, left_method, right_method, left_icon, right_icon)
+    render "ransack_boolean", f: f, left_method: left_method, right_method: right_method, left_icon: left_icon, right_icon: right_icon
+  end
+
   # def fa_icon(icon, extra_class = "")
   #   "<i class='fa fa-#{icon} #{extra_class}'></i>".html_safe
   # end

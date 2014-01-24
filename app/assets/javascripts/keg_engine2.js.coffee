@@ -4,51 +4,51 @@ Array::diff = (a) ->
 
 fixHelper = (e, ui) ->
   ui.children().each ->
-    $(this).width $(this).width()
-    $(this).children().each ->
-      $(this).width $(this).width()
+    $(@).width $(@).width()
+    $(@).children().each ->
+      $(@).width $(@).width()
   $(ui).closest("table").find("th").each ->
-    $(this).width $(this).width()
+    $(@).width $(@).width()
   ui
 
 $.fn.bind_sortable = ->
-  $(this).sortable
+  $(@).sortable
     helper: fixHelper
     update: (event, ui) ->
       $.ajax
         type: "POST"
-        data: $(this).sortable("serialize", { key: $(this).data("sortable-key")})
-        url: $(this).data("sortable-url")
-      $(this).parent().effect "highlight", {}, 2000
+        data: $(@).sortable("serialize", { key: $(@).data("sortable-key")})
+        url: $(@).data("sortable-url")
+      $(@).parent().effect "highlight", {}, 2000
 
 $.fn.convert_remote_links = ->
   $("[remote-links]").find("a").each ->
-    $(this).attr("data-remote", "true") unless $(this).attr("href") is "#"
+    $(@).attr("data-remote", "true") unless $(@).attr("href") is "#"
 
 $.fn.bind_modal_data_url = ->
   $("[data-url]").each ->
-    $(this).load_modal_data_url()
+    $(@).load_modal_data_url()
 
 $.fn.load_modal_data_url = ->
-  $(this).bind "click", ->
-    el_id = "#" + $(this).data("controls-modal") + " .in_body"
+  $(@).bind "click", ->
+    el_id = "#" + $(@).data("controls-modal") + " .in_body"
     $(el_id).html ""
     $.ajax
-      url: $(this).data("url")
+      url: $(@).data("url")
       complete: (jqXHR) ->
         $(el_id).spin false
         $(el_id).html jqXHR.responseText
 
 $.fn.concat_checkbox_text = ->
   $str = ""
-  $(this).find("input[type='checkbox']:checked").each ->
-    $str +=  "<span class='btn btn-mini'>" + $(this).parent().text() + "</span> "
+  $(@).find("input[type='checkbox']:checked").each ->
+    $str +=  "<span class='btn btn-mini'>" + $(@).parent().text() + "</span> "
   $str
 
 $.fn.bind_collapsible_label = ->
-  $switch = $($(this).data("collapsible-label"))
-  $main_el = $($(this).data("collapsible-main"))
-  $opt_el = $($(this).data("collapsible-opt"))
+  $switch = $($(@).data("collapsible-label"))
+  $main_el = $($(@).data("collapsible-main"))
+  $opt_el = $($(@).data("collapsible-opt"))
 
   $switch.addClass("switch")
   $main_el.hide()
@@ -56,8 +56,8 @@ $.fn.bind_collapsible_label = ->
 
   $switch.on
     click: ->
-      $(this).toggleClass("open")
-      if $(this).hasClass("open")
+      $(@).toggleClass("open")
+      if $(@).hasClass("open")
         $main_el.show()
         $opt_el.hide()
       else
@@ -65,8 +65,8 @@ $.fn.bind_collapsible_label = ->
         $opt_el.show()
 
 $.fn.bind_checkboxes_clone = ->
-  $el = $($(this).data("checkboxes-clone"))
-  $new_id = $(this).data("checkboxes-clone-into")
+  $el = $($(@).data("checkboxes-clone"))
+  $new_id = $(@).data("checkboxes-clone-into")
 
   $str = $el.concat_checkbox_text()
   $new_el = $("<div class='controls' id='#{$new_id}' style='margin-top: 5px;'></div>").hide()
@@ -80,41 +80,57 @@ $.fn.bind_checkboxes_clone = ->
       $new_el.html($str)
 
 $.fn.bind_boolean_value = ->
-  $(this).on
+  $(@).on
     click: ->
-      $(this).parent().find("a").removeClass("active")
-      $hidden = $(this).parent().next("input[type='hidden']")
+      $(@).parent().find("a").removeClass("active")
+      $hidden = $(@).parent().next("input[type='hidden']")
 
-      $val = $(this).data("boolean-value")
+      $val = $(@).data("boolean-value")
       $hid_val = $hidden.val()
 
       if ("#{$val}" != "#{$hid_val}")
         $hidden.val($val)
-        $(this).addClass("active")
+        $(@).addClass("active")
       else
         $hidden.val("")
 
       $("form").submit()
 
+$.fn.bind_ransack_btn = ->
+  $(@).on
+    click: ->
+      $btn = $(@).data("ransack-btn")
+      $el = $("[data-ransack-chk='#{$btn}']")
+      $el.click()
+      $("form").submit()
+
+$.fn.bind_ransack_chk = ->
+  $(@).on
+    click: ->
+      $group = $(@).data("ransack-group")
+      $id = $(@).attr("id")
+      $els = $("input[type='checkbox'][data-ransack-group='#{$group}']").not("##{$id}")
+      $els.attr("checked", false)
+
 $.fn.bind_switches = ->
   $(".switch").each ->
-    $(this).bind "click", ->
-      el = $("#" + $(this).data("switchable"))
-      if $(this).hasClass("open")
-        $(this).removeClass "open"
-        $(this).addClass "closed"
+    $(@).bind "click", ->
+      el = $("#" + $(@).data("switchable"))
+      if $(@).hasClass("open")
+        $(@).removeClass "open"
+        $(@).addClass "closed"
         el.hide()
       else
-        $(this).removeClass "closed"
-        $(this).addClass "open"
+        $(@).removeClass "closed"
+        $(@).addClass "open"
         el.show()
 
 bind_clearable_fields = ->
   $("[data-clearable-field]").each ->
-    input = $(this)
+    input = $(@)
     form = (if input.length > 0 then $(input[0].form) else $())
     link = $("<a href=\"#\" class=\"active_field_clear\"><i class='fa fa-times-circle'></i></a>")
-    $(this).after link
+    $(@).after link
     input.on
       change: ->
         form.submit()
@@ -128,16 +144,16 @@ bind_clearable_fields = ->
 
 bind_filter_html_elements = ->
   $("[data-filter-html]").on "keyUp", ->
-    q = $(this).val()
-    src_tag = $(this).data("src-tag")
-    dest_tag = $(this).data("dest-tag")
-    src_class = $(this).data("src-class")
+    q = $(@).val()
+    src_tag = $(@).data("src-tag")
+    dest_tag = $(@).data("dest-tag")
+    src_class = $(@).data("src-class")
 
     reg = new RegExp(".*" + q, "i")
     els = $("#{src_tag}.#{src_class}")
     els.each ->
-      str = $(this).html()
-      id = "#" + $(this).attr("id").replace(src_tag + "_", dest_tag + "_")
+      str = $(@).html()
+      id = "#" + $(@).attr("id").replace(src_tag + "_", dest_tag + "_")
       unless q is ""
         if str.match(reg)
           $(id).show()
@@ -148,7 +164,7 @@ bind_filter_html_elements = ->
 
 bind_button_urls = ->
   $("[data-button-url]").on "click", ->
-    window.location = $(this).data("button-url")
+    window.location = $(@).data("button-url")
     false
 
 bind_datepicker = ->
@@ -157,7 +173,7 @@ bind_datepicker = ->
     weekStart: 1
 
 $.fn.bind_counter = ->
-  $data = $(this).data()
+  $data = $(@).data()
   if $data
     $data.timerEnd = ->
       if $data.timerend
@@ -171,7 +187,7 @@ $.fn.bind_counter = ->
     $data.digitWidth = $data.digitwidth
     $data.digitHeight = $data.digitheight
 
-    $(this).countdown($data)
+    $(@).countdown($data)
 
 $.fn.remove_fields = (link) ->
   $(link).prev("input[type=hidden]").val "1"
@@ -220,21 +236,28 @@ $ ->
   $(".form-vertical").removeClass("form-horizontal")
 
   $("[data-nicedit]").each ->
-    new nicEditor().panelInstance($(this).attr("id"))
+    new nicEditor().panelInstance($(@).attr("id"))
 
   $("[data-checkboxes-clone]").each ->
-    $(this).bind_checkboxes_clone()
+    $(@).bind_checkboxes_clone()
   $("[data-collapsible-label]").each ->
-    $(this).bind_collapsible_label()
+    $(@).bind_collapsible_label()
 
   $("[data-boolean-value]").each ->
-    $(this).bind_boolean_value()
+    $(@).bind_boolean_value()
+
+  $("[data-ransack-btn]").each ->
+    $(@).bind_ransack_btn()
+
+  $("[data-ransack-chk]").each ->
+    $(@).bind_ransack_chk()
+
 
   $("[data-active-select]").each ->
-    $url = $(this).data("active-select")
-    $(this).on
+    $url = $(@).data("active-select")
+    $(@).on
       change: ->
-        $to_url = $url.replace /__template__/, $(this).val()
+        $to_url = $url.replace /__template__/, $(@).val()
         window.location = $to_url
 
   $("[data-reset-form]").on
@@ -243,14 +266,14 @@ $ ->
       false
 
   $("[data-token-input]").each ->
-    $(this).tokenInput $(this).data("token-input"),
+    $(@).tokenInput $(@).data("token-input"),
       theme: "facebook"
-      prePopulate: $(this).data("token-pre")
+      prePopulate: $(@).data("token-pre")
       preventDuplicates: true
       crossDomain: false
-      hintText: $(this).data("token-hint-text")
-      noResultsText: $(this).data("token-no-results-text")
-      searchingText: $(this).data("token-searching-text")
+      hintText: $(@).data("token-hint-text")
+      noResultsText: $(@).data("token-no-results-text")
+      searchingText: $(@).data("token-searching-text")
 
   $("#flash_panel").delay(3000).fadeOut 3000
 
