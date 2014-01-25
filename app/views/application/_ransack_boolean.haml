@@ -1,10 +1,13 @@
 - group = [ left_method, right_method ].join("_")
+- title ||= ""
+- left_value ||= true
+- right_value ||= true
 
 .btn-group{style: "width:60px;"}
-  %a.btn.btn-mini{class: (f.object.send(left_method) == true) && "active", data: { ransack_btn: left_method, ransack_group: group } }
+  %a.btn.btn-mini{class: (f.object.send(left_method) == left_value) && "active", data: { ransack_btn: left_method, ransack_group: group }, title: title }
     = fa_icon(left_icon)
-  %a.btn.btn-mini{class: (f.object.send(right_method) == true) && "active", data: { ransack_btn: right_method, ransack_group: group } }
+  %a.btn.btn-mini{class: (f.object.send(right_method) == right_value) && "active", data: { ransack_btn: right_method, ransack_group: group }, title: title}
     = fa_icon(right_icon)
 
-= f.check_box left_method, value: true, data: { ransack_chk: left_method, ransack_group: group }, class: "hide"
-= f.check_box right_method, value: true, data: { ransack_chk: right_method, ransack_group: group }, class: "hide"
+= f.check_box left_method, { data: { ransack_chk: left_method, ransack_group: group }, class: "hide" }, left_value, false
+= f.check_box right_method, { data: { ransack_chk: right_method, ransack_group: group }, class: "hide" }, right_value, false
