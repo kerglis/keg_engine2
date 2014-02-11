@@ -10,6 +10,7 @@ lv:
 
   edit_model: "Rediģēt: %{model}"
   create_model: "Jauns: %{model}"
+  delete: Dzēst
 
   reset_form: Notīrīt
 

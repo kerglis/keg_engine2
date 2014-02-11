@@ -4,10 +4,12 @@ class Asset < ActiveRecord::Base
 
   acts_as_list
 
+  default_scope { order(:position) }
+
   class << self
 
     def permitted_params
-      [ :id, :attachment, :uploadable_type, :uploadable_id ]
+      [ :id, :attachment, :uploadable_type, :uploadable_id, :description, :position, :_destroy ]
     end
 
   end
