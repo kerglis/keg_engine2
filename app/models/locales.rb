@@ -25,8 +25,7 @@ module Locales
       end
 
       def permalink(method = :name)
-        from = send(method) rescue ""
-        from.to_url.gsub(/['<>]/, "").to_s rescue ""
+        send(method).to_url rescue ""
       end
 
       def path(locale, params = {})
