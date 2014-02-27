@@ -18,11 +18,11 @@ class Asset < ActiveRecord::Base
     "assets.uploadable_id = #{uploadable_id} and assets.uploadable_type='#{uploadable_type}'"
   end
 
-  def validate
-    unless attachment.errors.empty?
-      errors.add :attachment, "Paperclip returned errors for file '#{attachment_file_name}' - check ImageMagick installation or image source file."
-      false
-    end
-  end
+  # def validate
+  #   unless attachment.errors.empty?
+  #     errors.add :attachment, "Paperclip returned errors for file '#{attachment_file_name}' - check ImageMagick installation or image source file."
+  #     false
+  #   end
+  # end
 
 end
