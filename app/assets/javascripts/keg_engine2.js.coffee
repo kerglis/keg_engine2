@@ -167,11 +167,6 @@ bind_button_urls = ->
     window.location = $(@).data("button-url")
     false
 
-bind_datepicker = ->
-  $('.datepicker').datepicker
-    format: 'dd.mm.yyyy'
-    weekStart: 1
-
 $.fn.bind_counter = ->
   $data = $(@).data()
   if $data
@@ -226,7 +221,10 @@ $ ->
   bind_clearable_fields()
   bind_filter_html_elements()
   bind_button_urls()
-  bind_datepicker()
+
+  $('.datepicker').datepicker
+    format: 'dd.mm.yyyy'
+    weekStart: 1
 
   $(".sortable").bind_sortable()
 

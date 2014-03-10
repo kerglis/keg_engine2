@@ -4,9 +4,9 @@
 - right_value ||= true
 
 .btn-group.btn-group-vertical
-  %a.btn.btn-mini{class: (f.object.send(left_method) == left_value) && "active", data: { ransack_btn: left_method, ransack_group: group }, title: title }
+  %a.btn.btn-mini.btn-xs.btn-default{class: (f.object.send(left_method) == left_value) && "active", data: { ransack_btn: left_method, ransack_group: group }, title: title }
     = fa_icon(left_icon)
-  %a.btn.btn-mini{class: (f.object.send(right_method) == right_value) && "active", data: { ransack_btn: right_method, ransack_group: group }, title: title}
+  %a.btn.btn-mini.btn-xs.btn-default{class: (f.object.send(right_method) == right_value) && "active", data: { ransack_btn: right_method, ransack_group: group }, title: title}
     = fa_icon(right_icon)
 
 = f.check_box left_method, { data: { ransack_chk: left_method, ransack_group: group }, class: "hide" }, left_value, false
