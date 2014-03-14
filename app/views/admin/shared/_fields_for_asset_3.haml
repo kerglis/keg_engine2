@@ -1,0 +1,22 @@
+- build_func = "build_#{asset_type.to_s}"
+- asset_obj = object.send(asset_type)
+- asset_obj ||= object.send(build_func)
+- colspan ||= 1
+- thumb_size ||= :thumb
+- normal_size ||= :normal
+- required ||= false
+- delete_url ||= nil
+
+= f.fields_for asset_type do |fi|
+  = fi.input :attachment, as: :file, required: required do
+    = fi.file_field :attachment
+    - unless asset_obj.new_record?
+      %div{id: asset_type.to_s, style: "margin-top: 5px"}
+        - case asset_type
+        - when :attachment_file
+          = icon(asset_obj.icon)
+          = asset_obj.attachment_file_name
+        - else
+          = link_to image_tag(asset_obj.attachment.url(thumb_size), alt: ""), asset_obj.attachment.url(normal_size), rel: "prettyPhoto[]"
+        - if delete_url
+          = link_to(fa_icon("times-circle red"), delete_url, { remote: true, confirm: t("confirm.delete") })

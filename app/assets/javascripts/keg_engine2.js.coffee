@@ -42,7 +42,7 @@ $.fn.load_modal_data_url = ->
 $.fn.concat_checkbox_text = ->
   $str = ""
   $(@).find("input[type='checkbox']:checked").each ->
-    $str +=  "<span class='btn btn-mini'>" + $(@).parent().text() + "</span> "
+    $str +=  "<span class='btn btn-xs btn-default'>" + $(@).parent().text() + "</span> "
   $str
 
 $.fn.bind_collapsible_label = ->

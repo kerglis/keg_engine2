@@ -7,8 +7,8 @@
 - cl = resource.state_class rescue ""
 
 .btn-group
-  %button.btn.btn-mini{class: cl}= tt(klass, state)
-  %button.btn.btn-mini.dropdown-toggle{ class: cl, data: { toggle: "dropdown"} }
+  %button.btn.btn-default.btn-xs.dropdown-toggle{ class: cl, type: "button", data: { toggle: "dropdown" }}
+    = tt(klass, state)
     %span.caret
 
   %ul.dropdown-menu

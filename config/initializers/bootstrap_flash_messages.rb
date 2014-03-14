@@ -1,7 +1,7 @@
 module BootstrapFlashMessages
   @alert_class_mapping = {
     alert: :danger,
-    notice: :danger,
+    notice: :info,
     success: :success,
     info: :info,
     warning: :warning,
