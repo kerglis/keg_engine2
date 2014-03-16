@@ -13,7 +13,7 @@ module DeviseHelper
                       count: resource.errors.count,
                       resource: resource.class.model_name.human.downcase)
     html = <<-HTML
-    <div class="alert alert-error" data-alert="true" >
+    <div class="alert alert-error alert-danger" data-alert="true" >
       <a class="close" href="#">×</a>
       <p><strong>#{sentence}</strong></p>
       <ul>#{messages}</ul>
