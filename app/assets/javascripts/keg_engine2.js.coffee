@@ -134,8 +134,8 @@ bind_clearable_fields = ->
     input.on
       change: ->
         form.submit()
-      changeDate: ->
-        form.submit()
+      # changeDate: ->
+      #   form.submit()
 
     link.on
       click: ->
