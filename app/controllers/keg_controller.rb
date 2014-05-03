@@ -40,7 +40,7 @@ module KegController
         # resource - from InheritedResources gem
         @object = resource
         klass = @object.class.name.underscore.to_sym
-        @domid = dom_id(@object)
+        # @domid = dom_id(@object)
         @object.destroy
         respond_to do |format|
           format.html { flash[:notice] = I18n.t("inherited_resources.successfully_removed"); redirect_to collection_url }
