@@ -7,6 +7,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.remember_me = true
 
     if @user.persisted?
+      # update current user image
+      image = env["omniauth.auth"]["info"]["image"] rescue nil
+      @user.update_attribute(:omniauth_image, image) if image && @user.respond_to?(:omniauth_image)
+
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "Facebook"
       sign_in_and_redirect @user, event: :authentication
     else
