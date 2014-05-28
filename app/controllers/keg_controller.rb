@@ -15,7 +15,7 @@ module KegController
 
       unless Rails.env.development?
         rescue_from ActiveRecord::RecordNotFound do
-          render(file: 'err_404', layout: 'application', status: :not_found )
+          render(file: 'application/err_404', layout: 'application', status: :not_found )
         end
       end
 
