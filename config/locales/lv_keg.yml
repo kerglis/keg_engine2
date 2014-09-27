@@ -28,6 +28,7 @@ lv:
     remove: Dzēst
 
   records_found:
+    zero: Nav atrasti atbilstoši ieraksti
     one: "Atrasts %{count} ieraksts"
     other: "Atrasti %{count} ieraksti"
   no_records_found: Nav atrasti atbilstoši ieraksti

@@ -2,7 +2,10 @@
 - show_always ||= false
 
 - unless collection.blank?
-  .alert.alert-info= t("records_found", count: collection.try(:total_entries))
+  - total = collection.try(:total_entries) || collection.try(:count) || 0
+  .cb.mrg_b1
+  .alert.alert-info= t("records_found", count: total)
 - else
   - if search_params.present? or show_always
+    .cb.mrg_b1
     .alert.alert-error= t("no_records_found")
