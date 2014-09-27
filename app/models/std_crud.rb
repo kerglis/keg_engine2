@@ -18,13 +18,19 @@ module StdCrud
 
       def create
         create! do |success, failure|
-          success.html { redirect_to edit_resource_url }
+          success.html do
+            resource.try(:send, params[:_state_event]) if params[:_state_event]
+            redirect_to edit_resource_url
+          end
         end
       end
 
       def update
         update! do |success, failure|
-          success.html { redirect_to edit_resource_url }
+          success.html do
+            resource.try(:send, params[:_state_event]) if params[:_state_event]
+            redirect_to edit_resource_url
+          end
         end
       end
 

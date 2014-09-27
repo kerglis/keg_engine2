@@ -1,0 +1,8 @@
+- except ||= [:swap]
+- events = resource.state_events - except
+
+- events.each do |event|
+  - cl = resource.event_class(event) rescue ""
+
+  %button.btn{ class: cl, type: "submit", value: event, name: "_state_event"}
+    = tt(resource.class, event)
