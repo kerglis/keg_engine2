@@ -6,11 +6,15 @@
 
 - cl = resource.state_class rescue ""
 
-.btn-group
-  %button.btn.btn-default.btn-xs.btn-mini.dropdown-toggle{ class: cl, type: "button", data: { toggle: "dropdown" }}
-    = tt(klass, state)
-    %span.caret
+- if events.present?
+  .btn-group
+    %button.btn.btn-default.btn-xs.btn-mini.dropdown-toggle{ class: cl, type: "button", data: { toggle: "dropdown" }}
+      = tt(klass, state)
+      %span.caret
 
-  %ul.dropdown-menu
-    - events.each do |event|
-      %li= link_to tt(klass, event), [url, "state=#{event}"].join(url =~ /\?/ ? "&" : "?"), remote: true
+    %ul.dropdown-menu
+      - events.each do |event|
+        %li= link_to tt(klass, event), [url, "state=#{event}"].join(url =~ /\?/ ? "&" : "?"), remote: true
+- else
+  .btn.btn-xs.btn-mini{ class: cl, disabled: true }
+    = tt(klass, state)

@@ -19,8 +19,9 @@ module StdCrud
       def create
         create! do |success, failure|
           success.html do
+            url = params[:redirect_to].presence || edit_resource_url
             resource.try(:send, params[:_state_event]) if params[:_state_event]
-            redirect_to edit_resource_url
+            redirect_to url
           end
         end
       end
@@ -28,8 +29,9 @@ module StdCrud
       def update
         update! do |success, failure|
           success.html do
+            url = params[:redirect_to].presence || edit_resource_url
             resource.try(:send, params[:_state_event]) if params[:_state_event]
-            redirect_to edit_resource_url
+            redirect_to url
           end
         end
       end
