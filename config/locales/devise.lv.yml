@@ -70,8 +70,8 @@ lv:
       didnt_receive_instructions: Nesaņēmāt konta atbloķēšanas instrukcijas?
 
     omniauth_callbacks:
-      success: "Veiksmīgi autorizējis ar %{kind} lietotāju."
-      failure: "Neizdevās autorizeties ar %{kind} lietotāju. Iemesls: %{reason}."
+      success: "Veiksmīgi autorizējies ar %{kind} lietotāju."
+      failure: "Neizdevās autorizēties ar %{kind} lietotāju. Iemesls: %{reason}."
     mailer:
       confirmation_instructions:
         subject: Konta apstiprināšanas informācija
