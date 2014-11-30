@@ -1,0 +1,14 @@
+- exclude = options[:exclude] || [:swap]
+- events = resource.state_events - exclude rescue resource.state_events
+- state = resource.state
+- url = options[:url]
+- btn_class = options[:btn_class] || "btn btn-xs btn-mini"
+- klass = resource.class
+
+- cl = resource.state_class rescue ""
+
+- if events.present?
+  - events.each do |event|
+    - cl = resource.event_class(event) rescue ""
+
+    %nobr= link_to tt(klass, event), [url, "state=#{event}"].join(url =~ /\?/ ? "&" : "?"), remote: true, class: "#{btn_class} #{cl}"

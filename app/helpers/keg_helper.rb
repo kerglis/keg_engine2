@@ -144,6 +144,15 @@ module KegHelper
     render "state_events_select", resource: resource, options: options, html: html
   end
 
+  def state_buttons(resource, options = {}, html = {})
+    unless options.key? :url
+      path = Rails.application.routes.recognize_path(options[:url])
+      options[:url] = {controller: path[:controller], id: resource.to_param, action: :set_state_to }
+    end
+
+    render "state_buttons", resource: resource, options: options, html: html
+  end
+
   def flag(locale, options = {})
     image_tag("flags/#{locale}.png", options)
   end
