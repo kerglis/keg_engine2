@@ -94,7 +94,7 @@ $.fn.bind_boolean_value = ->
       else
         $hidden.val("")
 
-      $("form").submit()
+      $("form").first().submit()
 
 $.fn.bind_ransack_btn = ->
   $(@).on
@@ -102,7 +102,8 @@ $.fn.bind_ransack_btn = ->
       $btn = $(@).data("ransack-btn")
       $el = $("[data-ransack-chk='#{$btn}']")
       $el.click()
-      $("form").submit()
+
+      $("form").first().submit()
 
 $.fn.bind_ransack_chk = ->
   $(@).on
