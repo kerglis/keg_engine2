@@ -36,14 +36,13 @@ module KegHelper
     "<div class='visible-phone'><a href='#top'>#{fa_icon("arrow-up")} #{t("navi.to_top")}</a></div>".html_safe
   end
 
-  def link_to_delete(resource, options = {})
-    link_to_destroy(resource, options)
+  def link_to_delete(resource, options = {}, html = {})
+    link_to_destroy(resource, options, html)
   end
 
-  def link_to_destroy(resource, options = {})
+  def link_to_destroy(resource, options = {}, html = {})
     return if resource.respond_to?(:can_destroy?) and ! resource.can_destroy?
 
-    options.assert_valid_keys(:url, :confirm, :label)
     options.reverse_merge! url: resource_url(resource) unless options.key?(:url)
     options.reverse_merge! confirm: t("confirm.delete")
 
@@ -51,7 +50,7 @@ module KegHelper
       remote:    true,
       method:    :delete,
       data:      { confirm:   options[:confirm] }
-    }
+    }.merge(html)
 
     link_to(fa_icon("times-circle", class: "fa-red"), options[:url], in_params)
   rescue Exception => e
@@ -70,7 +69,7 @@ module KegHelper
     link_to_function(name, "$.fn.add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", options)
   end
 
-  def link_to_swap(resource, options = {})
+  def link_to_swap(resource, options = {}, html = {})
     options.reverse_merge! url:      resource_url(resource)      unless options.key? :url
     options.reverse_merge! confirm:  t("confirm.deactivate")     unless options.key? :confirm
     options.reverse_merge! state:    resource.state == "active"  unless options.key? :state
@@ -84,7 +83,7 @@ module KegHelper
       method: :get,
       data: { confirm: options[:confirm] },
       remote: true
-    }
+    }.merge(html)
     in_options.delete(:data) unless options[:state]
 
     link_to icn, swap_path, in_options
