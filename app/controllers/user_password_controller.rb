@@ -1,10 +1,9 @@
 class UserPasswordController < ApplicationController
-
   inherit_resources
   defaults resource_class: User, instance_name: 'user'
 
-  before_filter :authenticate_user!
-  before_filter :resource
+  before_action :authenticate_user!
+  before_action :resource
 
   actions :show, :edit, :update
 
@@ -21,14 +20,13 @@ class UserPasswordController < ApplicationController
     end
   end
 
-private
+  private
 
   def resource
     @user = current_user
   end
 
   def permitted_params
-    params.permit( user: User.permitted_params )
+    params.permit(user: User.permitted_params)
   end
-
 end

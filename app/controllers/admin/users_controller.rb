@@ -1,11 +1,10 @@
 class Admin::UsersController < Admin::BaseController
-
   inherit_resources
   include StdCrud
 
   actions :all, except: [:show]
 
-protected
+  protected
 
   def collection
     @q = User.search(params[:q])
@@ -13,7 +12,6 @@ protected
   end
 
   def permitted_params
-    params.permit( user: User.permitted_params + [ :admin ] )
+    params.permit(user: User.permitted_params + [:admin])
   end
-
 end

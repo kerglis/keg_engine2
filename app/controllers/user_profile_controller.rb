@@ -1,10 +1,10 @@
 class UserProfileController < ApplicationController
-
   inherit_resources
+
   defaults resource_class: User, instance_name: 'user'
 
-  before_filter :authenticate_user!
-  before_filter :resource
+  before_action :authenticate_user!
+  before_action :resource
 
   actions :show, :edit, :update
 
@@ -13,17 +13,16 @@ class UserProfileController < ApplicationController
   end
 
   def update
-    update!{ user_path }
+    update! { user_path }
   end
 
-private
+  private
 
   def resource
     @user = current_user
   end
 
   def permitted_params
-    params.permit( user: User.permitted_params )
+    params.permit(user: User.permitted_params)
   end
-
 end

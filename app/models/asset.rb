@@ -1,21 +1,19 @@
 class Asset < ActiveRecord::Base
-
   belongs_to :uploadable, polymorphic: true
 
-  acts_as_list
+  acts_as_list scope: %i[uploadable_id uploadable_type]
 
   scope :ordered, -> { order(:position) }
 
-  class << self
-
-    def permitted_params
-      [ :id, :attachment, :uploadable_type, :uploadable_id, :description, :position, :_destroy ]
-    end
-
+  def self.permitted_params
+    %i[
+      id
+      attachment
+      uploadable_type
+      uploadable_id
+      description
+      position
+      _destroy
+    ]
   end
-
-  def scope_condition
-    "assets.uploadable_id = #{uploadable_id} and assets.uploadable_type='#{uploadable_type}'"
-  end
-
 end

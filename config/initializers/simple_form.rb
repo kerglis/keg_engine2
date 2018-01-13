@@ -72,13 +72,22 @@ SimpleForm.setup do |config|
   config.wrappers :append, tag: 'div', class: "control-group", error_class: 'error' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label
     b.wrapper tag: 'div', class: 'controls' do |input|
       input.wrapper tag: 'div', class: 'input-append' do |append|
         append.use :input
+        append.use :label
       end
       input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
       input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+    end
+  end
+
+  config.wrappers :inline_checkbox, tag: 'div', class: 'control-group', error_class: 'error' do |b|
+    b.use :html5
+    b.wrapper tag: 'div', class: 'controls' do |ba|
+      ba.use :label_input, wrap_with: { class: 'checkbox inline' }
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
 
@@ -92,7 +101,7 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
   config.button_class = 'btn'

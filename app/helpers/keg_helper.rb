@@ -41,7 +41,7 @@ module KegHelper
   end
 
   def link_to_destroy(resource, options = {}, html = {})
-    return if resource.respond_to?(:can_destroy?) and ! resource.can_destroy?
+    return if resource.respond_to?(:can_destroy?) && !resource.can_destroy?
 
     options.reverse_merge! url: resource_url(resource) unless options.key?(:url)
     options.reverse_merge! confirm: t("confirm.delete")

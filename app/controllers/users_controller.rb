@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-
   inherit_resources
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def update
-    update!{ user_url }
+    update! { user_url }
   end
 
   def show
@@ -13,15 +12,13 @@ class UsersController < ApplicationController
     render :edit
   end
 
-
-private
+  private
 
   def resource
     @user = current_user
   end
 
   def permitted_params
-    params.permit( user: User.permitted_params )
+    params.permit(user: User.permitted_params)
   end
-
 end

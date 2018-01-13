@@ -21,6 +21,10 @@
       #content
         #flash_messages
           = flash_messages(:close, :fade)
+
+        - if current_user && ! current_user.completed_profile?
+          = render "user_profile/completoraaa"
+
         = yield
 
       #footer

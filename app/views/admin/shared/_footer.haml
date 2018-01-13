@@ -1,7 +1,8 @@
 %p
-  &copy; #{AppConfig[:site_fullname]}, #{Time.now.year}
+  &copy; #{AppConfig[:site_fullname]}, #{Time.current.year}
   %br
   %small
     &copy; Technology by
-    %a(href="http://www.ambicode.com" target="_blank")Ambicode,
-    #{Time.now.year}
+    %a{ href: "http://www.ambicode.com", target: :_blank} Ambicode
+    ,
+    = Time.current.year}
