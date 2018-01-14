@@ -103,7 +103,7 @@ module KegAdminController
 
     def authenticate_admin
       authenticate_user!
-      unless user_signed_in? and current_user.admin?
+      unless user_signed_in? && current_user.admin?
         flash[:error] = I18n.t('errors.messages.permission_denied')
         redirect_to root_url
       end
