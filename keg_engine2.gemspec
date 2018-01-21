@@ -32,7 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form'
   s.add_dependency 'state_machines-activerecord'
   s.add_dependency 'stringex'
-  s.add_dependency 'will_paginate'
 
   s.add_development_dependency 'capistrano'
   s.add_development_dependency 'thin'

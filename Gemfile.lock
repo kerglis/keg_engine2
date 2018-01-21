@@ -19,7 +19,6 @@ PATH
       simple_form
       state_machines-activerecord
       stringex
-      will_paginate
 
 GEM
   remote: http://rubygems.org/
@@ -229,7 +228,6 @@ GEM
     tzinfo (0.3.53)
     warden (1.2.7)
       rack (>= 1.0)
-    will_paginate (3.1.6)
 
 PLATFORMS
   ruby
