@@ -2,7 +2,7 @@ module StdCrud
   extend ActiveSupport::Concern
 
   included do
-    load_and_authorize_resource
+    load_and_authorize_resource param_method: :param_sanitizer
   end
 
   def destroy
@@ -31,5 +31,13 @@ module StdCrud
         redirect_to url
       end
     end
+  end
+
+  private
+
+  def param_sanitizer
+    params
+      .require(resource_class.to_s.underscore.to_sym)
+      .permit(resource_class.permitted_params)
   end
 end
