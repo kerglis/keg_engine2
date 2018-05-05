@@ -4,7 +4,6 @@ PATH
     keg_engine2 (2.0)
       acts_as_list
       awesome_nested_set
-      cancan
       config_spartan
       devise
       haml-rails

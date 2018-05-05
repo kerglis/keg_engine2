@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'acts_as_list'
   s.add_dependency 'awesome_nested_set'
-  s.add_dependency 'cancan'
   s.add_dependency 'config_spartan'
   s.add_dependency 'devise'
   s.add_dependency 'haml-rails'
