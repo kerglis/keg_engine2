@@ -38,6 +38,6 @@ module StdCrud
   def param_sanitizer
     params
       .require(resource_class.to_s.underscore.to_sym)
-      .permit(resource_class.permitted_params)
+      .permit(resource_class.try(:permitted_params))
   end
 end
