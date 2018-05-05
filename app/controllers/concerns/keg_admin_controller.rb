@@ -46,7 +46,7 @@ module KegAdminController
   def swap_field
     @object = resource
     field = params[:field]
-    @object.update_attribute(field, !@object[field])
+    @object.update_attributes!(field => !@object[field])
     @klass = @object.class.name.underscore.to_sym
     @flash_str = I18n.t('flash.actions.update.notice', resource_name: t1(@object.class))
     respond_to do |format|
@@ -60,12 +60,12 @@ module KegAdminController
     puts e.message
   end
 
-  def swap_preference
+  def swap_setting
     @object = resource
 
-    pref = params[:pref]
+    setting = params[:setting]
 
-    @object.write_preference(pref, !@object.prefs[pref])
+    @object.send("#{setting}=", !@object.send("#{setting}?"))
     @object.save(validate: false)
 
     @klass = @object.class.name.underscore.to_sym
@@ -109,9 +109,8 @@ module KegAdminController
 
   def authenticate_admin
     authenticate_user!
-    unless user_signed_in? && current_user.admin?
-      flash[:error] = I18n.t('errors.messages.permission_denied')
-      redirect_to root_url
-    end
+    return if user_signed_in? && current_user.admin?
+    flash[:error] = I18n.t('errors.messages.permission_denied')
+    redirect_to root_url
   end
 end

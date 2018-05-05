@@ -3,4 +3,6 @@
 .form-group
   .form-actions.col-sm-offset-3.col-sm-7
     %button.btn.btn-primary= t("new")
-    = link_to t("back_to_collection"), back_url
+    %a.btn.btn-default{ href: back_url }
+      = fa_icon("arrow-left")
+      = t("back_to_collection")

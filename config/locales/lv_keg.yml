@@ -55,9 +55,8 @@ lv:
     active: "Aktīvs"
     inactive: "Neaktīvs"
 
-
-  back: "« Atpakaļ"
-  back_to_collection: "« Atpakaļ uz sarakstu"
+  back: "Atpakaļ"
+  back_to_collection: "Atpakaļ uz sarakstu"
 
   create: "Izveidot jaunu"
   create_new: "Jauns: %{model}"
