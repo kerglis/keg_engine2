@@ -35,9 +35,17 @@ module StdCrud
 
   private
 
+  def resource_type
+    resource_class.to_s.underscore.to_sym
+  end
+
   def param_sanitizer
     params
-      .require(resource_class.to_s.underscore.to_sym)
+      .require(resource_type)
       .permit(resource_class.try(:permitted_params))
+  end
+
+  def permitted_params
+    params.permit(resource_type => resource_class.try(:permitted_params))
   end
 end
