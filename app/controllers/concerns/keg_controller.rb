@@ -10,13 +10,13 @@ module KegController
     before_action   :set_locale
     before_action   :load_rpp
     before_action   :set_user_current
-  end
 
-  unless Rails.env.development?
-    rescue_from ActiveRecord::RecordNotFound do
-      render  file: 'application/err_404',
-              layout: 'application',
-              status: :not_found
+    unless Rails.env.development?
+      rescue_from ActiveRecord::RecordNotFound do
+        render  file: 'application/err_404',
+                layout: 'application',
+                status: :not_found
+      end
     end
   end
 
