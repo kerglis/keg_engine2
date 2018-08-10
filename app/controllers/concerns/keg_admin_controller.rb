@@ -28,7 +28,7 @@ module KegAdminController
 
   def swap_object
     @object = resource
-    @object.swap
+    @object.swap!
     @klass = @object.class.name.underscore.to_sym
     state = @object.state
     @flash_str = I18n.t('state.changed_to', state: state)
