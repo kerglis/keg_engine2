@@ -192,7 +192,7 @@ module KegHelper
     image_tag("flags/#{locale}.png", options)
   end
 
-  def icon(icon_name, options = {})
+  def icon_old(icon_name, options = {})
     options[:width] ||= 16
     options[:height] ||= 16
     image_tag("icons/#{icon_name}.png", options)

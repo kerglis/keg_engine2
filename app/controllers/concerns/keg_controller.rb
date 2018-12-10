@@ -7,9 +7,9 @@ module KegController
     include SetLocale
 
     after_action    :store_location, only: %i[index show]
-    before_action   :set_locale
     before_action   :load_rpp
     before_action   :set_user_current
+    before_action   :set_locale
 
     unless Rails.env.development?
       rescue_from ActiveRecord::RecordNotFound do
